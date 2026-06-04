@@ -2,7 +2,7 @@
 
 import tkinter as tk
 from tkinter import font
-import logic
+import main
 
 # Colors
 BG_COLOR        = "#233d4d"
@@ -47,7 +47,7 @@ tk.Label(input_frame, text="Imaginary Part:", bg=FRAME_COLOR, fg=TEXT_COLOR).gri
 entry_imag = tk.Entry(input_frame, width=15, font=main_font)
 entry_imag.grid(row=1, column=1, padx=5, pady=5)
 
-tk.Button(input_frame, text="Add Number", command=logic.add_number,
+tk.Button(input_frame, text="Add Number", command=main.add_number,
           bg="#fe7f2d", fg="white",
           font=("Segoe UI", 9, "bold"), width=15).grid(row=0, column=2, rowspan=2, padx=10)
 
@@ -67,7 +67,7 @@ btn_configs = [('Addition', 'add'), ('Subtraction', 'sub'), ('Multiplication', '
 
 for i, (text, mode) in enumerate(btn_configs):
     tk.Button(ops_frame, text=text, width=12,
-              command=lambda m=mode: logic.perform_op(m),
+              command=lambda m=mode: main.perform_op(m),
               bg="#fe7f2d", fg="white",
               activebackground="#f4a261",
               activeforeground="white",
@@ -79,7 +79,7 @@ rot_frame.pack(padx=20, pady=10, fill="x")
 tk.Label(rot_frame, text="Angle (degrees):", bg=FRAME_COLOR, fg=TEXT_COLOR).grid(row=0, column=0, sticky="w")
 entry_angle = tk.Entry(rot_frame, width=15, font=main_font)
 entry_angle.grid(row=0, column=1, padx=5)
-tk.Button(rot_frame, text="Rotate Last Number", command=logic.rotate_selected,
+tk.Button(rot_frame, text="Rotate Last Number", command=main.rotate_selected,
           bg="#fe7f2d", fg="white", font=("Segoe UI", 9, "bold")).grid(row=0, column=2, padx=10)
 
 scale_frame = tk.LabelFrame(scrollable_frame, text=" Scaling ", bg=FRAME_COLOR, fg=TEXT_COLOR, font=main_font, padx=10, pady=10)
@@ -87,28 +87,28 @@ scale_frame.pack(padx=20, pady=10, fill="x")
 tk.Label(scale_frame, text="Scale Factor (k):", bg=FRAME_COLOR, fg=TEXT_COLOR).grid(row=0, column=0, sticky="w")
 entry_scale = tk.Entry(scale_frame, width=15, font=main_font)
 entry_scale.grid(row=0, column=1, padx=5)
-tk.Button(scale_frame, text="Scale Last Number", command=logic.scale_selected,
+tk.Button(scale_frame, text="Scale Last Number", command=main.scale_selected,
           bg="#fe7f2d", fg="white", font=("Segoe UI", 9, "bold")).grid(row=0, column=2, padx=10)
 
 lbl_result = tk.Label(scrollable_frame, text="Result: (Waiting...)", font=("Segoe UI", 11, "bold"), bg=BG_COLOR, fg="#f1c40f", wraplength=400)
 lbl_result.pack(pady=15)
 
-tk.Button(scrollable_frame, text="DISPLAY ARGAND PLOT", command=logic.show_plot,
+tk.Button(scrollable_frame, text="DISPLAY ARGAND PLOT", command=main.show_plot,
           bg="#fe7f2d", fg="black",
           activebackground="#f4a261", activeforeground="black",
           font=("Segoe UI", 11, "bold"), height=2, relief="flat").pack(fill="x", padx=40, pady=5)
 
-tk.Button(scrollable_frame, text="RESET ALL DATA", command=logic.clear_all,
+tk.Button(scrollable_frame, text="RESET ALL DATA", command=main.clear_all,
           bg="#fe7f2d", fg="black",
           activebackground="#f4a261", activeforeground="black",
           font=("Segoe UI", 9, "bold"), relief="flat", width=20).pack(pady=10)
 
 # Connect GUI widgets to logic
-logic.entry_real = entry_real
-logic.entry_imag = entry_imag
-logic.listbox_numbers = listbox_numbers
-logic.lbl_result = lbl_result
-logic.entry_angle = entry_angle
-logic.entry_scale = entry_scale
+main.entry_real = entry_real
+main.entry_imag = entry_imag
+main.listbox_numbers = listbox_numbers
+main.lbl_result = lbl_result
+main.entry_angle = entry_angle
+main.entry_scale = entry_scale
 
 root.mainloop()
